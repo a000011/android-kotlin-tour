@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_login_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_login_to_registration"
+            app:destination="@id/registration" />
     </fragment>
     <fragment
         android:id="@+id/homePage"
         android:name="com.tours.myapplication.HomePage"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/registration"
+        android:name="com.tours.myapplication.Registration"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registration_to_login2"
+            app:destination="@id/login" />
+    </fragment>
 </navigation>

@@ -11,7 +11,6 @@ typealias  Requester <ResultEntity> = (
     onError: ((errorMessage: Error) -> Unit)?
 ) -> Unit
 
-
 class RequestFactory {
     companion object {
         fun <ResultEntity> post(

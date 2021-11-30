@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Имя" />
+        <EditText
+            android:id="@+id/secondname"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Фамилия" />
+        <EditText
+            android:id="@+id/newLoginInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Придумайте логин" />
+
+        <EditText
+            android:id="@+id/newPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Придумайте пароль" />
+
+        <EditText
+            android:id="@+id/newPasswordConfirmInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Повторите пароль" />
+
+        <Button
+            android:id="@+id/registration_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="Зарегистрироваться" />
+
+        <Button
+            android:id="@+id/to_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="Вход" />
+    </LinearLayout>
+
+</FrameLayout>

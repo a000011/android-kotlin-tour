@@ -19,6 +19,9 @@ class Login : Fragment() {
         binding.authButton.setOnClickListener {
             login()
         }
+        binding.toRegistrationButton.setOnClickListener {
+            this.findNavController().navigate(R.id.registration)
+        }
         return binding.root
     }
 
@@ -26,10 +29,10 @@ class Login : Fragment() {
         val login: String = binding.loginInput.text.toString()
         val password: String = binding.passwordInput.text.toString()
 
-        val auth = Auth()
+        val auth = UserClient()
         Thread {
             auth.login(
-                Credentials(login, password),
+                LoginCredentials(login, password),
                 { token ->
                     activity?.runOnUiThread{
                         this.findNavController().navigate(R.id.homePage)
