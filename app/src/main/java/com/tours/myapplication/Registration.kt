@@ -1,10 +1,11 @@
 package com.tours.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tours.myapplication.databinding.FragmentRegistrationBinding
 
@@ -17,19 +18,19 @@ class Registration : Fragment() {
     ): View {
         binding = FragmentRegistrationBinding.inflate(layoutInflater, container, false)
 
-        binding.toLoginButton.setOnClickListener{
+        binding.toLoginButton.setOnClickListener {
             this.findNavController().navigate(R.id.login)
         }
 
-        binding.registrationButton.setOnClickListener{
-            if (binding.newPasswordInput.text.toString() == binding.newPasswordConfirmInput.text.toString()){
+        binding.registrationButton.setOnClickListener {
+            if (binding.newPasswordInput.text.toString() == binding.newPasswordConfirmInput.text.toString()) {
                 registrate()
             }
         }
         return binding.root
     }
 
-    fun registrate(){
+    fun registrate() {
         val firstname: String = binding.firstname.text.toString()
         val secondname: String = binding.secondname.text.toString()
         val login: String = binding.newLoginInput.text.toString()
@@ -44,16 +45,18 @@ class Registration : Fragment() {
                     login,
                     password,
                 ),
-                { status ->
-                    println(status)
-                    activity?.runOnUiThread{
+                {
+                    activity?.runOnUiThread {
+                        Toast.makeText(activity, "Вы успешно зарегестрировались", Toast.LENGTH_SHORT).show()
                         this.findNavController().navigate(R.id.login)
                     }
                 },
-                { error ->
-                    println("err")
-
-                    println(error)
+                { _, normalMessage ->
+                    activity?.runOnUiThread {
+                        normalMessage.forEach { err ->
+                            Toast.makeText(activity, err, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             )
         }.start()

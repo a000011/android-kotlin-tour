@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.tours.myapplication.databinding.FragmentLoginBinding
 
@@ -38,8 +39,12 @@ class Login : Fragment() {
                         this.findNavController().navigate(R.id.homePage)
                     }
                 },
-                { error ->
-                    println(error)
+                { _, normalMessage ->
+                    activity?.runOnUiThread {
+                        normalMessage.forEach { err ->
+                            Toast.makeText(activity,  err, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             )
         }.start()
