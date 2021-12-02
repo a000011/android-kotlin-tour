@@ -36,9 +36,8 @@ class Registration : Fragment() {
         val login: String = binding.newLoginInput.text.toString()
         val password: String = binding.newPasswordInput.text.toString()
 
-        val auth = UserClient()
         Thread {
-            auth.registrate(
+            UserClient.registrate(
                 RegistrationCredentials(
                     firstname,
                     secondname,

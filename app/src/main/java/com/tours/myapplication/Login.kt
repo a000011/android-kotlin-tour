@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.github.kittinunf.fuel.Fuel
+import com.tours.client.RequestFactory
 import com.tours.myapplication.databinding.FragmentLoginBinding
 
 class Login : Fragment() {
@@ -30,13 +32,13 @@ class Login : Fragment() {
         val login: String = binding.loginInput.text.toString()
         val password: String = binding.passwordInput.text.toString()
 
-        val auth = UserClient()
         Thread {
-            auth.login(
+            UserClient.login(
                 LoginCredentials(login, password),
-                { token ->
+                { res ->
+                    RequestFactory.setAuth(res.token)
                     activity?.runOnUiThread{
-                        this.findNavController().navigate(R.id.homePage)
+                        this.findNavController().navigate(R.id.tourList)
                     }
                 },
                 { _, normalMessage ->

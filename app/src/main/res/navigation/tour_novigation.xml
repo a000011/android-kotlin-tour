@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_login_to_registration"
             app:destination="@id/registration" />
+        <action
+            android:id="@+id/action_login_to_tourList"
+            app:destination="@id/tourList" />
     </fragment>
     <fragment
         android:id="@+id/homePage"
@@ -31,4 +34,9 @@
             android:id="@+id/action_registration_to_login2"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/tourList"
+        android:name="com.tours.myapplication.TourList"
+        android:label="fragment_tour_list"
+        tools:layout="@layout/fragment_tour_list" />
 </navigation>

@@ -1,5 +1,7 @@
 package com.tours.client
 
+import com.github.kittinunf.fuel.core.extensions.authentication
+import com.github.kittinunf.fuel.httpGet
 import com.tours.entities.Error
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
@@ -16,6 +18,12 @@ typealias  Requester <ResultEntity> = (
 
 class RequestFactory {
     companion object {
+        private lateinit var bearerToken: String
+
+        fun setAuth(token: String){
+            bearerToken = token
+        }
+
         fun <ResultEntity> post(
             uri: String,
             toJson: Class<ResultEntity>,
@@ -23,7 +31,12 @@ class RequestFactory {
             val requester: Requester<ResultEntity> = { body, onSuccess, onError ->
                 val gson = Gson()
 
-                val (_, response, result) = uri.httpPost(body).responseString()
+                val (_, response, result) = with (uri.httpPost(body)){
+                    if (::bearerToken.isInitialized){
+                        return@with authentication().bearer(bearerToken).responseString()
+                    }
+                    return@with responseString()
+                }
 
                 when (result) {
                     is Result.Failure -> {
@@ -34,6 +47,37 @@ class RequestFactory {
                     }
                     is Result.Success -> {
                         onSuccess(gson.fromJson(result.get(), toJson))
+                    }
+                }
+            }
+
+            return requester
+        }
+
+        fun <ResultEntity> get(
+            uri: String,
+            fromJson: Class<ResultEntity>,
+        ): Requester<ResultEntity> {
+            val requester: Requester<ResultEntity> = { body, onSuccess, onError ->
+                val gson = Gson()
+
+                val (_, response, result) = with (uri.httpGet(body)){
+                    if (::bearerToken.isInitialized){
+                        return@with authentication().bearer(bearerToken).responseString()
+                    }
+
+                    return@with responseString()
+                }
+
+                when (result) {
+                    is Result.Failure -> {
+                        if (onError !== null) {
+                            val err = gson.fromJson(String(response.data), Error::class.java)
+                            onError(err, ErrorMaper.mapErrors(err.errors))
+                        }
+                    }
+                    is Result.Success -> {
+                        onSuccess(gson.fromJson(result.get(), fromJson))
                     }
                 }
             }
