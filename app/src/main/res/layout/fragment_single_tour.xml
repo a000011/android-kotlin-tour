@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".SingleTour"
+    android:gravity="center"
+    android:background="@color/green"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"
+
+            android:src="@drawable/qwer"/>
+        <TextView
+            android:id="@+id/tourTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="Путешествие в казахстан"/>
+        <TextView
+            android:id="@+id/tourDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:text="Описание этогоебучего тура..."/>
+
+</LinearLayout>

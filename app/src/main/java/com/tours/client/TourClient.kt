@@ -5,7 +5,7 @@ import com.tours.entities.Tour
 
 class TourClient {
     companion object {
-        val getToursRequest = RequestFactory.get(Endpoints.TOURS, Array<Tour>::class.java)
+        private val getToursRequest = RequestFactory.get(Endpoints.TOURS, Array<Tour>::class.java)
 
         fun getTours(
             onSuccess: (tours: Array<Tour>) -> Unit,

@@ -20,8 +20,8 @@ data class RegistrationCredentials(
 
 class UserClient {
     companion object {
-        val sendLoginRequest = RequestFactory.post(Endpoints.LOGIN, Token::class.java)
-        val sendRegistrationRequest = RequestFactory.post(Endpoints.REG, Status::class.java)
+        private val sendLoginRequest = RequestFactory.post(Endpoints.LOGIN, Token::class.java)
+        private val sendRegistrationRequest = RequestFactory.post(Endpoints.REG, Status::class.java)
 
         fun login(
             loginCredentials: LoginCredentials,
