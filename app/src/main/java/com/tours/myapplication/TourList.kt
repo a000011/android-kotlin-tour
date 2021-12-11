@@ -27,25 +27,32 @@ class TourList : Fragment() {
     private fun fetchAndRenderTours() {
         Thread {
             TourClient.getTours(
-                { tours -> addTourFragmentToList(*parseToursIntoFragments(tours)) }
+                { tours ->
+                    val toursFragments = parseToursIntoFragments(tours)
+                    addTourFragmentToList(*toursFragments)
+//                    attachOnClickListeners(toursFragments)
+                }
             )
         }.start()
     }
 
-    private fun addTourFragmentToList(vararg fragments: Fragment) {
-
+    private fun addTourFragmentToList(vararg fragments: SingleTour) {
         fragments.forEach { fragment ->
             parentFragmentManager.beginTransaction()
                 .add(binding.toursList.id, fragment)
                 .commit()
+            fragment.setOnClickListener {
+                gotoTourById(fragment.entity.tourId)
+            }
         }
 
     }
 
-    private fun parseToursIntoFragments(tours: Array<Tour>): Array<Fragment> {
+    private fun parseToursIntoFragments(tours: Array<Tour>): Array<SingleTour> {
         return tours.map { tour ->
             return@map SingleTour.newInstance(
                 SingleTourArgs(
+                    tour.id,
                     tour.title,
                     tour.description,
                     tour.img,
@@ -54,4 +61,15 @@ class TourList : Fragment() {
         }.toTypedArray()
     }
 
+    private fun attachOnClickListeners(tours: Array<SingleTour>): Unit {
+        tours.forEach { tour ->
+            tour.setOnClickListener {
+                gotoTourById(tour.entity.tourId)
+            }
+        }
+    }
+
+    private fun gotoTourById(tourId: Number) {
+        println(tourId)
+    }
 }

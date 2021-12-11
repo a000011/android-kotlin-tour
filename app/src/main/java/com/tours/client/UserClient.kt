@@ -5,6 +5,7 @@ import com.tours.client.OnErrorCallback
 import com.tours.client.RequestFactory
 import com.tours.entities.Status
 import com.tours.entities.Token
+import com.tours.entities.User
 
 data class LoginCredentials(
     val login: String,
@@ -22,6 +23,7 @@ class UserClient {
     companion object {
         private val sendLoginRequest = RequestFactory.post(Endpoints.LOGIN, Token::class.java)
         private val sendRegistrationRequest = RequestFactory.post(Endpoints.REG, Status::class.java)
+        private val GetUserInfoRequest = RequestFactory.get(Endpoints.ME, User::class.java)
 
         fun login(
             loginCredentials: LoginCredentials,
@@ -55,5 +57,15 @@ class UserClient {
             )
         }
 
+        fun getUserInfo(
+            onSuccess: (user: User) -> Unit,
+            onError: OnErrorCallback? = null
+        ) {
+            GetUserInfoRequest(
+                listOf(),
+                onSuccess,
+                onError
+            )
+        }
     }
 }

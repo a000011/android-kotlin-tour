@@ -1,6 +1,6 @@
 package com.tours.myapplication
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SingleTourArgs(
+    val tourId: Number,
     val title: String,
     val description: String,
     val img: String
@@ -20,41 +21,37 @@ data class SingleTourArgs(
 
 class SingleTour : BaseFragment<SingleTourArgs>() {
     private lateinit var binding: FragmentSingleTourBinding
+    private lateinit var onClickListener: View.OnClickListener
+
+    companion object {
+        val newInstance = getInitializer { SingleTour() }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentSingleTourBinding.inflate(layoutInflater, container, false)
-
+        if(::onClickListener.isInitialized) binding.root.setOnClickListener(onClickListener)
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args = getArgs()
-        Thread{
-            val img = Picasso.get().load(args.img)
+        val img = Picasso.get().load(entity.img).fit().placeholder(R.drawable.qwer)
+            .into(binding.imageView)
 
-            activity?.runOnUiThread{
-                img.into(binding.imageView)
-            }
+        binding.tourTitle.text = entity.title
 
-        }.start()
+        binding.tourDescription.text = "${entity.description.take(100)}..."
 
-        binding.tourTitle.text = args.title
-        binding.tourDescription.text = args.description.take(100) + "..."
     }
 
-
-    companion object {
-        fun newInstance(args: SingleTourArgs): SingleTour{
-            val her = SingleTour()
-            val bundle = Bundle()
-            bundle.putParcelable(ARGS_KEY, args)
-            her.arguments = bundle
-            return her
+    fun setOnClickListener(listener: View.OnClickListener) {
+        if(::binding.isInitialized){
+            binding.root.setOnClickListener(listener)
         }
+        onClickListener = listener
     }
 }

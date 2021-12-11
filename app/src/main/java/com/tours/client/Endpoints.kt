@@ -7,5 +7,6 @@ class Endpoints {
         val LOGIN = "${HOST}/login"
         val REG = "${HOST}/registration"
         val TOURS = "${HOST}/tour"
+        val ME = "${HOST}/me"
     }
 }

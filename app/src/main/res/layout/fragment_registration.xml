@@ -19,6 +19,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.05"
             android:gravity="bottom"
+            android:textColor="@color/white"
             android:text="Ваше имя:" />
 
         <EditText
@@ -28,6 +29,8 @@
             android:layout_weight="0.07"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:background="@drawable/white_shape"
             android:hint="Имя" />
 
         <TextView
@@ -35,40 +38,53 @@
             android:layout_height="0dp"
             android:layout_weight="0.05"
             android:gravity="bottom"
+            android:textColor="@color/white"
+
             android:text="Ваша фамилия:" />
         <EditText
             android:id="@+id/secondname"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.07"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/white_shape"
+
             android:hint="Фамилия" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05"
             android:gravity="bottom"
+            android:textColor="@color/white"
+
             android:text="Ваш логин:" />
         <EditText
             android:id="@+id/newLoginInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:textColor="@color/white"
             android:layout_weight="0.07"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/white_shape"
             android:hint="Придумайте логин" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05"
+            android:textColor="@color/white"
+
             android:gravity="bottom"
             android:text="Ваш пароль:" />
         <EditText
             android:id="@+id/newPasswordInput"
             android:layout_width="match_parent"
+            android:background="@drawable/white_shape"
             android:layout_height="0dp"
             android:layout_weight="0.07"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="Придумайте пароль" />
@@ -77,12 +93,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05"
+            android:textColor="@color/white"
+
             android:gravity="bottom"
             android:text="Повторение пароля:" />
         <EditText
             android:id="@+id/newPasswordConfirmInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@drawable/white_shape"
+            android:textColor="@color/white"
             android:layout_weight="0.07"
             android:ems="10"
             android:inputType="textPassword"
@@ -93,12 +113,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.07"
+            android:backgroundTint="@color/main_color_button"
             android:text="Зарегистрироваться" />
 
         <Button
             android:id="@+id/to_login_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:backgroundTint="@color/main_color_button"
             android:layout_weight="0.07"
             android:text="Вход" />
 

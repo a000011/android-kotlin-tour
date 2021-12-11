@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_login_to_tourList"
             app:destination="@id/tourList" />
+        <action
+            android:id="@+id/action_login_to_profilePage"
+            app:destination="@id/profilePage" />
     </fragment>
     <fragment
         android:id="@+id/homePage"
@@ -38,5 +41,18 @@
         android:id="@+id/tourList"
         android:name="com.tours.myapplication.TourList"
         android:label="fragment_tour_list"
-        tools:layout="@layout/fragment_tour_list" />
+        tools:layout="@layout/fragment_tour_list" >
+        <action
+            android:id="@+id/action_tourList_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.tours.myapplication.ProfilePage"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" >
+        <action
+            android:id="@+id/action_profilePage_to_tourList"
+            app:destination="@id/tourList" />
+    </fragment>
 </navigation>

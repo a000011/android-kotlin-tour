@@ -7,46 +7,61 @@
 
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="1">
+        android:id="@+id/colo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
         <EditText
             android:id="@+id/loginInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:textColor="@color/white"
             android:hint="Логин"
-            android:text="anton"/>
+            android:textColorHint="@color/white"
+            android:background="@drawable/white_shape"
+            android:inputType="textPersonName"
+            android:layout_marginHorizontal="3dp"
+            android:paddingStart="10dp"
+            android:text="anton" />
 
-            <EditText
-                android:id="@+id/passwordInput"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Пароль"
-                android:text="anton"/>
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:ems="10"
+            android:layout_marginVertical="20dp"
+            android:paddingStart="10dp"
+            android:hint="Пароль"
+            android:layout_marginHorizontal="3dp"
+            android:textColorHint="@color/white"
+            android:background="@drawable/white_shape"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:text="anton" />
 
-            <Button
-                android:id="@+id/auth_button"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:text="Войти" />
+        <Button
+            android:id="@+id/auth_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:backgroundTint="@color/main_color_button"
+            android:text="Войти" />
 
-            <Button
-                android:id="@+id/to_registration_button"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:text="Зарегистрироваться" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/to_registration_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:backgroundTint="@color/main_color_button"
+            android:text="Зарегистрироваться" />
+    </LinearLayout>
 
 </FrameLayout>

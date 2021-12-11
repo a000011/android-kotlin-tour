@@ -3,33 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".SingleTour"
-    android:gravity="center"
-    android:background="@color/green"
-    android:orientation="vertical"
     android:layout_marginBottom="20dp"
-    android:weightSum="1">
+    android:background="@drawable/shape"
+    android:gravity="center"
+    android:id="@+id/root"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".SingleTour">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.7"
-            android:scaleType="centerCrop"
-            android:layout_margin="5dp"
+            android:background="@drawable/shape"
 
-            android:src="@drawable/qwer"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/qwer" />
+
         <TextView
             android:id="@+id/tourTitle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
-            android:text="Путешествие в казахстан"/>
+            android:fontFamily="@font/montserrat_light"
+            android:gravity="center"
+            android:text="Путешествие в казахстан"
+            android:textColor="@color/main_text_color"
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/tourDescription"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_weight="0.2"
-            android:text="Описание этогоебучего тура..."/>
+            android:fontFamily="@font/montserrat_light"
+            android:text=""
+            android:textColor="@color/main_text_color"
+            android:textSize="16dp" />
+
 
 </LinearLayout>
