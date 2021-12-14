@@ -39,7 +39,7 @@ class SingleTour : BaseFragment<SingleTourArgs>() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val img = Picasso.get().load(entity.img).fit().placeholder(R.drawable.qwer)
+        val img = Picasso.get().load(entity.img).fit().placeholder(R.drawable.placeholder)
             .into(binding.imageView)
 
         binding.tourTitle.text = entity.title

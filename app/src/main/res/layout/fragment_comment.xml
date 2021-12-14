@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/green"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    tools:context=".SingleTour">
+
+    <ImageView
+        android:id="@+id/userAvatar"
+        android:padding="5dp"
+        android:contentDescription="@string/textBeforeLoading"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:scaleType="fitCenter"
+        android:src="@drawable/placeholder" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:minHeight="100dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tourTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:fontFamily="@font/montserrat_light"
+            android:text="@string/textBeforeLoading"
+            android:textColor="@color/main_text_color"
+            android:textSize="20dp"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:id="@+id/tourDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_weight="0.7"
+            android:fontFamily="@font/montserrat_light"
+            android:text="@string/textBeforeLoading"
+            android:textColor="@color/main_text_color"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

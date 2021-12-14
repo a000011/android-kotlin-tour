@@ -31,7 +31,7 @@ class SingleTourPage : Fragment() {
                 args.tourId,
                 { tour ->
                     activity?.runOnUiThread {
-                        val img = Picasso.get().load(tour.img).fit().placeholder(R.drawable.qwer)
+                        val img = Picasso.get().load(tour.img).fit().placeholder(R.drawable.placeholder)
                             .into(binding.imageView)
 
                         binding.tourTitle.text = tour.title

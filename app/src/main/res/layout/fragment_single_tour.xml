@@ -17,9 +17,8 @@
             android:layout_height="0dp"
             android:layout_weight="0.7"
             android:background="@drawable/shape"
-
             android:scaleType="centerCrop"
-            android:src="@drawable/qwer" />
+            android:src="@drawable/placeholder" />
 
         <TextView
             android:id="@+id/tourTitle"
