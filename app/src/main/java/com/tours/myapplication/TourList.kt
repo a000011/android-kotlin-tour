@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.tours.client.TourClient
-import com.tours.entities.Tour
+import com.tours.entities.ShortTour
 import com.tours.myapplication.databinding.FragmentTourListBinding
 
 class TourList : Fragment() {
@@ -30,7 +31,7 @@ class TourList : Fragment() {
                 { tours ->
                     val toursFragments = parseToursIntoFragments(tours)
                     addTourFragmentToList(*toursFragments)
-//                    attachOnClickListeners(toursFragments)
+                    attachOnClickListeners(toursFragments)
                 }
             )
         }.start()
@@ -41,14 +42,10 @@ class TourList : Fragment() {
             parentFragmentManager.beginTransaction()
                 .add(binding.toursList.id, fragment)
                 .commit()
-            fragment.setOnClickListener {
-                gotoTourById(fragment.entity.tourId)
-            }
         }
-
     }
 
-    private fun parseToursIntoFragments(tours: Array<Tour>): Array<SingleTour> {
+    private fun parseToursIntoFragments(tours: Array<ShortTour>): Array<SingleTour> {
         return tours.map { tour ->
             return@map SingleTour.newInstance(
                 SingleTourArgs(
@@ -64,12 +61,15 @@ class TourList : Fragment() {
     private fun attachOnClickListeners(tours: Array<SingleTour>): Unit {
         tours.forEach { tour ->
             tour.setOnClickListener {
-                gotoTourById(tour.entity.tourId)
+                gotoTourById(tour.entity.tourId.toInt())
             }
         }
     }
 
-    private fun gotoTourById(tourId: Number) {
-        println(tourId)
+    private fun gotoTourById(tourId: Int) {
+        activity?.runOnUiThread {
+            val action = TourListDirections.actionTourListToSingleTourPage(tourId)
+            this.findNavController().navigate(action)
+        }
     }
 }

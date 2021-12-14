@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_tourList_to_profilePage"
             app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_tourList_to_singleTourPage"
+            app:destination="@id/singleTourPage" />
     </fragment>
     <fragment
         android:id="@+id/profilePage"
@@ -54,5 +57,13 @@
         <action
             android:id="@+id/action_profilePage_to_tourList"
             app:destination="@id/tourList" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleTourPage"
+        android:name="com.tours.myapplication.SingleTourPage"
+        android:label="SingleTourPage" >
+        <argument
+            android:name="tourId"
+            app:argType="integer" />
     </fragment>
 </navigation>
