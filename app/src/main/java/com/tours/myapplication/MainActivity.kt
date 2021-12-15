@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
@@ -40,7 +39,5 @@ class MainActivity : AppCompatActivity() {
                 else ->  binding.bottomNavMenu.visibility = View.VISIBLE
             }
         }
-
-
     }
 }
