@@ -7,6 +7,7 @@ import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
 import com.google.gson.Gson
 import com.tours.utils.ErrorMaper
+import java.lang.Exception
 
 typealias  OnErrorCallback = (errorMessage: Error, normalMessage: List<String>) -> Unit
 
@@ -38,17 +39,22 @@ class RequestFactory {
                     return@with responseString()
                 }
 
-                when (result) {
-                    is Result.Failure -> {
-                        if (onError !== null) {
-                            val err = gson.fromJson(String(response.data), Error::class.java)
-                            onError(err, ErrorMaper.mapErrors(err.errors))
+                try {
+                    when (result) {
+                        is Result.Failure -> {
+                            if (onError !== null) {
+                                val err = gson.fromJson(String(response.data), Error::class.java)
+                                onError(err, ErrorMaper.mapErrors(err.errors))
+                            }
+                        }
+                        is Result.Success -> {
+                            onSuccess(gson.fromJson(result.get(), toJson))
                         }
                     }
-                    is Result.Success -> {
-                        onSuccess(gson.fromJson(result.get(), toJson))
-                    }
+                }catch (e: Exception){
+                    println(e)
                 }
+
             }
 
             return requester
@@ -69,16 +75,20 @@ class RequestFactory {
                     return@with responseString()
                 }
 
-                when (result) {
-                    is Result.Failure -> {
-                        if (onError !== null) {
-                            val err = gson.fromJson(String(response.data), Error::class.java)
-                            onError(err, ErrorMaper.mapErrors(err.errors))
+                try {
+                    when (result) {
+                        is Result.Failure -> {
+                            if (onError !== null) {
+                                val err = gson.fromJson(String(response.data), Error::class.java)
+                                onError(err, ErrorMaper.mapErrors(err.errors))
+                            }
+                        }
+                        is Result.Success -> {
+                            onSuccess(gson.fromJson(result.get(), fromJson))
                         }
                     }
-                    is Result.Success -> {
-                        onSuccess(gson.fromJson(result.get(), fromJson))
-                    }
+                }catch (e: Exception){
+                    println(e)
                 }
             }
 

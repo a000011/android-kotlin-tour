@@ -65,10 +65,17 @@
         <argument
             android:name="tourId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_singleTourPage_to_addCommentForm"
+            app:destination="@id/addCommentForm" />
     </fragment>
     <fragment
         android:id="@+id/markStar"
         android:name="com.tours.myapplication.MarkStar"
         android:label="fragment_mark_star"
         tools:layout="@layout/fragment_mark_star" />
+    <fragment
+        android:id="@+id/addCommentForm"
+        android:name="com.tours.myapplication.AddCommentForm"
+        android:label="AddCommentForm" />
 </navigation>

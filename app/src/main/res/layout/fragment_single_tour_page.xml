@@ -30,7 +30,7 @@
             android:id="@+id/tourMark"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
         <TextView
             android:id="@+id/tourDescription"
@@ -38,9 +38,27 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:fontFamily="@font/montserrat_light"
+            android:justificationMode="inter_word"
             android:text="@string/textBeforeLoading"
             android:textColor="@color/main_text_color"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Комментарии:"
+            android:textColor="@color/main_text_color"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addCommentButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:backgroundTint="@color/main_color_button"
+            android:text="Оставить отзыв" />
 
         <LinearLayout
             android:id="@+id/commentList"
