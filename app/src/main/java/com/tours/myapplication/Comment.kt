@@ -6,16 +6,18 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import com.tours.myapplication.databinding.FragmentCommentBinding
 import com.tours.utils.BaseFragment
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CommentArgs(
-//    val avatar: String,
+    val avatar: String,
     val firstname: String,
     val lastname: String,
-    val content: String
+    val content: String,
+    val mark: Float,
 ) : Parcelable
 
 class Comment : BaseFragment<CommentArgs>() {
@@ -34,6 +36,10 @@ class Comment : BaseFragment<CommentArgs>() {
 
         binding.userName.text = entity.firstname + " " + entity.lastname
         binding.content.text = entity.content
+
+        Picasso.get().load(entity.avatar).fit().placeholder(R.drawable.placeholder)
+            .into(binding.userAvatar)
+
 
         return binding.root
     }

@@ -6,6 +6,6 @@ data class Comment(
     val tour_id: Int,
     val avatar: String,
     val content: String,
-    val mark: Int,
+    val mark: Float,
     val user: User,
 )

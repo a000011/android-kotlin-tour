@@ -9,5 +9,6 @@ data class Tour(
     val img: String,
 //    val updated_at: String,
 //    val created_at: String,
-    val comments: Array<Comment>
+    val comments: Array<Comment>,
+    val mark: Float
 )

@@ -53,6 +53,7 @@ class TourList : Fragment() {
                     tour.title,
                     tour.description,
                     tour.img,
+                    tour.mark
                 )
             )
         }.toTypedArray()

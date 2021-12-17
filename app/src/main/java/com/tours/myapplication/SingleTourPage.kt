@@ -36,6 +36,7 @@ class SingleTourPage : Fragment() {
 
                         val comments = parseToursIntoFragmets(tour.comments)
                         addCommentFragmentToList(*comments)
+                        renderStars(tour.mark)
                     }
                 }
             )
@@ -48,10 +49,11 @@ class SingleTourPage : Fragment() {
         return comments.map { comment ->
             return@map Comment.newInstance(
                 CommentArgs(
-//                    comment.user.avatar,
+                    comment.user.avatar,
                     comment.user.firstname,
                     comment.user.lastname,
                     comment.content,
+                    comment.mark
                 )
             )
         }.toTypedArray()
@@ -61,6 +63,14 @@ class SingleTourPage : Fragment() {
         fragments.forEach { fragment ->
             parentFragmentManager.beginTransaction()
                 .add(binding.commentList.id, fragment)
+                .commit()
+        }
+    }
+
+    fun renderStars(mark: Float){
+        repeat(mark.toInt()){
+            childFragmentManager.beginTransaction()
+                .add(binding.tourMark.id, MarkStar())
                 .commit()
         }
     }

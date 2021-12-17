@@ -66,4 +66,9 @@
             android:name="tourId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/markStar"
+        android:name="com.tours.myapplication.MarkStar"
+        android:label="fragment_mark_star"
+        tools:layout="@layout/fragment_mark_star" />
 </navigation>

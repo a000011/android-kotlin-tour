@@ -16,7 +16,8 @@ data class SingleTourArgs(
     val tourId: Number,
     val title: String,
     val description: String,
-    val img: String
+    val img: String,
+    val mark: Float
 ) : Parcelable
 
 class SingleTour : BaseFragment<SingleTourArgs>() {
@@ -43,6 +44,7 @@ class SingleTour : BaseFragment<SingleTourArgs>() {
             .into(binding.imageView)
 
         binding.tourTitle.text = entity.title
+        renderStars(entity.mark)
 
         binding.tourDescription.text = "${entity.description.take(100)}..."
 
@@ -53,5 +55,13 @@ class SingleTour : BaseFragment<SingleTourArgs>() {
             binding.root.setOnClickListener(listener)
         }
         onClickListener = listener
+    }
+
+    fun renderStars(mark: Float){
+        repeat(mark.toInt()){
+            childFragmentManager.beginTransaction()
+                .add(binding.tourMark.id, MarkStar())
+                .commit()
+        }
     }
 }
