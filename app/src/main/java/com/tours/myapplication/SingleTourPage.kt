@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import com.tours.client.TourClient
-import com.tours.entities.ShortTour
 import com.tours.myapplication.databinding.FragmentSingleTourPageBinding
 import com.tours.entities.ToursEntities.Comment as CommentEntity
 
@@ -29,8 +28,9 @@ class SingleTourPage : Fragment() {
                 args.tourId,
                 { tour ->
                     activity?.runOnUiThread {
-                        val img = Picasso.get().load(tour.img).fit().placeholder(R.drawable.placeholder)
-                            .into(binding.imageView)
+                        val img =
+                            Picasso.get().load(tour.img).fit().placeholder(R.drawable.placeholder)
+                                .into(binding.imageView)
 
                         binding.tourTitle.text = tour.title
                         binding.tourDescription.text = tour.description
@@ -50,7 +50,7 @@ class SingleTourPage : Fragment() {
         return binding.root
     }
 
-    fun parseToursIntoFragmets(comments: Array<CommentEntity>): Array<Comment>{
+    fun parseToursIntoFragmets(comments: Array<CommentEntity>): Array<Comment> {
         return comments.map { comment ->
             return@map Comment.newInstance(
                 CommentArgs(
@@ -72,12 +72,14 @@ class SingleTourPage : Fragment() {
         }
     }
 
-    fun renderStars(mark: Float){
-        repeat(mark.toInt()){
-            parentFragmentManager.beginTransaction()
-                .add(binding.tourMark.id, MarkStar())
-                .commit()
-        }
+    fun renderStars(mark: Float) {
+        childFragmentManager.beginTransaction()
+            .add(
+                binding.tourMarkContainer.id, MarksView.newInstance(
+                    MarksArgs(mark.toInt())
+                )
+            )
+            .commit()
     }
 }
 

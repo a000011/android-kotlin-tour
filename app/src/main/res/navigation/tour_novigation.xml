@@ -78,4 +78,9 @@
         android:id="@+id/addCommentForm"
         android:name="com.tours.myapplication.AddCommentForm"
         android:label="AddCommentForm" />
+    <fragment
+        android:id="@+id/marksView"
+        android:name="com.tours.myapplication.MarksView"
+        android:label="fragment_marks_view"
+        tools:layout="@layout/fragment_marks_view" />
 </navigation>

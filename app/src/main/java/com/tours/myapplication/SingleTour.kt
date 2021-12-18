@@ -33,7 +33,7 @@ class SingleTour : BaseFragment<SingleTourArgs>() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSingleTourBinding.inflate(layoutInflater, container, false)
-        if(::onClickListener.isInitialized) binding.root.setOnClickListener(onClickListener)
+        if (::onClickListener.isInitialized) binding.root.setOnClickListener(onClickListener)
         return binding.root
     }
 
@@ -44,24 +44,25 @@ class SingleTour : BaseFragment<SingleTourArgs>() {
             .into(binding.imageView)
 
         binding.tourTitle.text = entity.title
-        renderStars(entity.mark)
+
+        renderMark()
 
         binding.tourDescription.text = "${entity.description.take(100)}..."
 
     }
 
     fun setOnClickListener(listener: View.OnClickListener) {
-        if(::binding.isInitialized){
+        if (::binding.isInitialized) {
             binding.root.setOnClickListener(listener)
         }
         onClickListener = listener
     }
 
-    fun renderStars(mark: Float){
-        repeat(mark.toInt()){
-            childFragmentManager.beginTransaction()
-                .add(binding.tourMark.id, MarkStar())
-                .commit()
-        }
+    fun renderMark() {
+        childFragmentManager.beginTransaction()
+            .add(binding.tourMarkContainer.id, MarksView.newInstance(
+                MarksArgs(entity.mark.toInt())
+            ))
+            .commit()
     }
 }

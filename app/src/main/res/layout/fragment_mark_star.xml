@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="50dp"
     android:layout_height="match_parent"
+    android:id="@+id/starView"
     android:contentDescription="@string/defaultImgDescription"
     android:scaleType="centerCrop"
+    android:layout_weight="0.2"
     android:src="@drawable/star"
     tools:context=".MarkStar" />

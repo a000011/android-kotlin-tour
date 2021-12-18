@@ -36,11 +36,21 @@ class Comment : BaseFragment<CommentArgs>() {
 
         binding.userName.text = entity.firstname + " " + entity.lastname
         binding.content.text = entity.content
-
+        renderStars(entity.mark)
         Picasso.get().load(entity.avatar).fit().placeholder(R.drawable.placeholder)
             .into(binding.userAvatar)
 
 
         return binding.root
+    }
+
+    fun renderStars(mark: Float) {
+        childFragmentManager.beginTransaction()
+            .add(
+                binding.tourMarkContainer.id, MarksView.newInstance(
+                    MarksArgs(mark.toInt())
+                )
+            )
+            .commit()
     }
 }
