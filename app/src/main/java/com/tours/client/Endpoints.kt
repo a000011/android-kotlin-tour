@@ -2,11 +2,11 @@ package com.tours.client
 
 class Endpoints {
     companion object{
-        val HOST = "http://10.0.2.2:8000/api"
+        const val HOST = "http://10.0.2.2:8000/api"
 
-        val LOGIN = "${HOST}/login"
-        val REG = "${HOST}/registration"
-        val TOURS = "${HOST}/tour"
-        val ME = "${HOST}/me"
+        const val LOGIN = "${HOST}/login"
+        const val REG = "${HOST}/registration"
+        const val TOURS = "${HOST}/tour"
+        const val ME = "${HOST}/me"
     }
 }

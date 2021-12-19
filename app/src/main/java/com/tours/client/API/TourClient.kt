@@ -1,19 +1,22 @@
-package com.tours.client
+package com.tours.client.API
 
+import com.tours.client.Endpoints
+import com.tours.client.OnErrorCallback
+import com.tours.client.requester.Request
 import com.tours.entities.ShortTour
 import com.tours.entities.Tour
 
 class TourClient {
     companion object {
         private val getToursRequest =
-            RequestFactory.get(Endpoints.TOURS, Array<ShortTour>::class.java)
+            Request.get(Endpoints.TOURS, Array<ShortTour>::class.java)
 
         fun getTourById(tourId: Int) =
-            RequestFactory.get(Endpoints.TOURS + "/${tourId}", Tour::class.java)
+            Request.get(Endpoints.TOURS + "/${tourId}", Tour::class.java)
 
         //TODO empty response
         fun commentTour(tourId: Int) =
-            RequestFactory.post(Endpoints.TOURS + "/${tourId}/addComment", Tour::class.java)
+            Request.post(Endpoints.TOURS + "/${tourId}/addComment")
 
         fun getTours(
             onSuccess: (tours: Array<ShortTour>) -> Unit,
@@ -40,7 +43,7 @@ class TourClient {
 
         fun commentTourById(
             tourId: Int,
-            onSuccess: (tour: Tour) -> Unit,
+            onSuccess: () -> Unit,
             onError: OnErrorCallback? = null
         ) {
             commentTour(tourId)(
