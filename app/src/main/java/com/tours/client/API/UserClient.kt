@@ -4,6 +4,7 @@ import com.tours.client.Endpoints
 import com.tours.client.Method
 import com.tours.client.OnErrorCallback
 import com.tours.client.RequestFactory
+import com.tours.client.requester.Request
 import com.tours.entities.Status
 import com.tours.entities.Token
 import com.tours.entities.User
@@ -22,9 +23,10 @@ data class RegistrationCredentials(
 
 class UserClient {
     companion object {
-        private val sendLoginRequest = RequestFactory.post(Endpoints.LOGIN, Token::class.java)
-        private val sendRegistrationRequest = RequestFactory.post(Endpoints.REG, Status::class.java)
-        private val GetUserInfoRequest = RequestFactory.get(Endpoints.ME, User::class.java)
+        private val sendLoginRequest = Request.post(Endpoints.LOGIN, Token::class.java)
+        private val sendRegistrationRequest = Request.post(Endpoints.REG, Status::class.java)
+        private val GetUserInfoRequest = Request.get(Endpoints.ME, User::class.java)
+
 
         fun login(
             loginCredentials: LoginCredentials,

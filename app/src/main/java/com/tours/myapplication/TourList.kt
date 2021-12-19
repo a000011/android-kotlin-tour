@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.tours.client.TourClient
+import com.tours.client.API.TourClient
 import com.tours.entities.ShortTour
 import com.tours.myapplication.databinding.FragmentTourListBinding
 
