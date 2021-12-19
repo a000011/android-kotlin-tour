@@ -40,7 +40,6 @@ class Comment : BaseFragment<CommentArgs>() {
         Picasso.get().load(entity.avatar).fit().placeholder(R.drawable.placeholder)
             .into(binding.userAvatar)
 
-
         return binding.root
     }
 

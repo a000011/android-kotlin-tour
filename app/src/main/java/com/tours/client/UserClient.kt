@@ -1,6 +1,7 @@
 package com.tours.myapplication
 
 import com.tours.client.Endpoints
+import com.tours.client.Method
 import com.tours.client.OnErrorCallback
 import com.tours.client.RequestFactory
 import com.tours.entities.Status
