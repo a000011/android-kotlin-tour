@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.tourList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tours.client.API.TourClient
 import com.tours.entities.ShortTour
+import com.tours.myapplication.SingleTour
+import com.tours.myapplication.SingleTourArgs
 import com.tours.myapplication.databinding.FragmentTourListBinding
 
 class TourList : Fragment() {

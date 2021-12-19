@@ -2,9 +2,9 @@ package com.tours.utils
 
 typealias ErrorMap = Map<String, Map<String, String>>
 
-class ErrorMaper {
+class ErrorMapper {
     companion object {
-        val errorMap: ErrorMap = mapOf(
+        private val errorMap: ErrorMap = mapOf(
             "login" to mapOf(
                 "validation.min.string" to "Поле 'логин' должно содержать больше 3 букв",
                 "validation.required" to "Поле 'логин' должно быть заполнено",

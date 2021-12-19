@@ -9,7 +9,7 @@ import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
 import com.google.gson.Gson
 import com.tours.entities.Error
-import com.tours.utils.ErrorMaper
+import com.tours.utils.ErrorMapper
 
 typealias  OnErrorCallback = (errorMessage: Error, normalMessage: List<String>) -> Unit
 
@@ -57,7 +57,7 @@ class RequestFactory {
                     uri, method, body, { (_, response) ->
                         if (onError !== null) {
                             val err = gson.fromJson(String(response.data), Error::class.java)
-                            onError(err, ErrorMaper.mapErrors(err.errors))
+                            onError(err, ErrorMapper.mapErrors(err.errors))
                         }
                     },
                     { onSuccess() }
@@ -79,7 +79,7 @@ class RequestFactory {
                 sendRequest(uri, method, body, { (_, response) ->
                     if (onError !== null) {
                         val err = gson.fromJson(String(response.data), Error::class.java)
-                        onError(err, ErrorMaper.mapErrors(err.errors))
+                        onError(err, ErrorMapper.mapErrors(err.errors))
                     }
                 },
                     { (_, _, result) ->

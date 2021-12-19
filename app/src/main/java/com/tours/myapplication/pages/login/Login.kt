@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.tours.client.RequestFactory
+import com.tours.myapplication.LoginCredentials
+import com.tours.myapplication.R
+import com.tours.myapplication.UserClient
 import com.tours.myapplication.databinding.FragmentLoginBinding
 
 class Login : Fragment() {
@@ -36,14 +39,14 @@ class Login : Fragment() {
                 LoginCredentials(login, password),
                 { res ->
                     RequestFactory.setAuth(res.token)
-                    activity?.runOnUiThread{
+                    activity?.runOnUiThread {
                         this.findNavController().navigate(R.id.tourList)
                     }
                 },
                 { _, normalMessage ->
                     activity?.runOnUiThread {
                         normalMessage.forEach { err ->
-                            Toast.makeText(activity,  err, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, err, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

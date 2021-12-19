@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.singleTour
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import com.tours.client.API.TourClient
+import com.tours.myapplication.*
 import com.tours.myapplication.databinding.FragmentSingleTourPageBinding
 import com.tours.entities.ToursEntities.Comment as CommentEntity
 

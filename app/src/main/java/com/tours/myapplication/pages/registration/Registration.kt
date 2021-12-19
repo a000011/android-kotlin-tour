@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.registration
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.tours.myapplication.R
+import com.tours.myapplication.RegistrationCredentials
+import com.tours.myapplication.UserClient
 import com.tours.myapplication.databinding.FragmentRegistrationBinding
 
 class Registration : Fragment() {
@@ -46,7 +49,11 @@ class Registration : Fragment() {
                 ),
                 {
                     activity?.runOnUiThread {
-                        Toast.makeText(activity, "Вы успешно зарегестрировались", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            activity,
+                            "Вы успешно зарегестрировались",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         this.findNavController().navigate(R.id.login)
                     }
                 },

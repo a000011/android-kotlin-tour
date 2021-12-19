@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.singleTour.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

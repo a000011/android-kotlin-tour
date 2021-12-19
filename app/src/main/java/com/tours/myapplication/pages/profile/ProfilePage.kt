@@ -1,4 +1,4 @@
-package com.tours.myapplication
+package com.tours.myapplication.pages.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import com.tours.client.RequestFactory
-import com.tours.myapplication.databinding.FragmentLoginBinding
+import com.tours.myapplication.UserClient
 import com.tours.myapplication.databinding.FragmentProfilePageBinding
 
 class ProfilePage : Fragment() {
@@ -31,13 +29,13 @@ class ProfilePage : Fragment() {
                 { user ->
                     activity?.runOnUiThread {
                         her.text = user.firstname
-                        Toast.makeText(activity,  user.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, user.toString(), Toast.LENGTH_SHORT).show()
                     }
                 },
                 { _, normalMessage ->
                     activity?.runOnUiThread {
                         normalMessage.forEach { err ->
-                            Toast.makeText(activity,  err, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, err, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
