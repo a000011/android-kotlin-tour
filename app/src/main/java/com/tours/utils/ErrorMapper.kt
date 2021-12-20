@@ -22,6 +22,18 @@ class ErrorMapper {
                 "validation.min.string" to "Поле 'Фамилия' должно содержать больше 3 букв",
                 "validation.required" to "Поле 'Фамилия' должно быть заполнено"
             ),
+            "commentContent" to mapOf(
+                "validation.required" to "Поле 'Коментарий' должно быть заполнено",
+                "validation.min.string" to "Слишком короткий комментарий"
+            ),
+            "mark" to mapOf(
+                "validation.required" to "Поле 'Оценка' должно быть заполнено",
+                "validation.max.numeric" to "Поле 'Оценка' не должно быть больше 5",
+                "validation.min.numeric" to "Поле 'Оценка' не должно быть меньше 0"
+            ),
+            "comment" to mapOf(
+                "you have already created comment on this tour page" to "Вы уже оставили отзыв на этом туре"
+            ),
             "auth" to mapOf(
                 "Unauthorized" to "Пользователь не найден",
             ),

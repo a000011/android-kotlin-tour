@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import com.tours.client.API.TourClient
 import com.tours.myapplication.*
 import com.tours.myapplication.databinding.FragmentSingleTourPageBinding
+import com.tours.myapplication.pages.tourList.TourListDirections
 import com.tours.entities.ToursEntities.Comment as CommentEntity
 
 class SingleTourPage : Fragment() {
@@ -44,7 +45,10 @@ class SingleTourPage : Fragment() {
         }.start()
 
         binding.addCommentButton.setOnClickListener {
-            this.findNavController().navigate(R.id.addCommentForm)
+            activity?.runOnUiThread {
+                val action = SingleTourPageDirections.actionSingleTourPageToAddCommentForm(args.tourId)
+                this.findNavController().navigate(action)
+            }
         }
 
         return binding.root

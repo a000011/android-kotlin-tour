@@ -77,7 +77,14 @@
     <fragment
         android:id="@+id/addCommentForm"
         android:name="com.tours.myapplication.pages.singleTour.views.AddCommentForm"
-        android:label="AddCommentForm" />
+        android:label="AddCommentForm" >
+        <argument
+            android:name="tourId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addCommentForm_to_singleTourPage"
+            app:destination="@id/singleTourPage" />
+    </fragment>
     <fragment
         android:id="@+id/marksView"
         android:name="com.tours.myapplication.MarksView"
